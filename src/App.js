@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import EventList from './components/EventList';
+import EventModal from './components/EventModal';
 import './App.css';
 
+// Component
 function App() {
+  // State
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p className='eventspot'>EventSpot Lite</p>
+      
+      {/* Event List */}
+      <EventList onSelectEvent={setSelectedEvent} />
+      
+      {/* Modal */}
+      {selectedEvent && (
+        <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+      )}
     </div>
   );
 }

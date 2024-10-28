@@ -1,38 +1,224 @@
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f9fc;
+  color: #333;
+}
+
+/* App container */
 .App {
   text-align: center;
+  padding: 20px;
+  max-width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Event List styles */
+.event-list {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  max-height: 100vh;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Event Card styling */
+.event-card {
+  width: 45rem;
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Event Image styles */
+.event-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 30px;
+  margin: 0.5rem 0;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.card-date,
+.card-location {
+  font-size: 20px;
+  margin: 0.25rem 0;
+}
+
+/* Event Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+  max-width: 700px;
+  min-height: 45vh;
+  width: 90%;
+  animation: slideIn 0.3s;
+  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow-y: auto;
+  flex-direction: column;
+}
+
+/* FadeIn animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* SlideIn animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close button styles */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Close button hover effect */
+.close-button:hover {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Button styles */
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007BFF;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Search Bar styles */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  width: 100%;
+}
+
+
+.search-input {
+  padding: 15px 29px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  font-size: 18px;
+  width: 100%;
+  max-width: 526px;
+  transition: border-color 0.3s ease;
+  margin: 15px;
+}
+
+/* Search Input focus effect */
+.search-input:focus {
+  outline: none;
+  border-color: #2d2e2e;
+  box-shadow: 0 0 5px rgba(104, 106, 107, 0.5);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .event-list {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 480px) {
+  .event-list {
+    grid-template-columns: 1fr;
   }
+}
+
+p {
+  font-size: 20px;
+}
+
+.eventspot {
+  font-size: 70px;
+  text-shadow: 5px 5px 2px grey;
 }
